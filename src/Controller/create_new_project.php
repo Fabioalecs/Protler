@@ -2,6 +2,14 @@
 
 require('../Model/Project.php');
 
-$newProject = new Project($_POST['projectname']);
+$projectName = $_POST['projectname'];
+
+$newProject = new Project($projectName);
 $newProject->insertProjectToDatabase();
+
+header('Location: ../View/dashboard.php');
+
+
+
+
 

@@ -1,3 +1,10 @@
+<?php
+    
+    require_once(dirname(__DIR__, 1)."\Controller\dest.php");
+    $data = consultProjects();
+
+?>
+
 <!DOCTYPE html>
 <html lang="PT-BR">
 
@@ -46,7 +53,7 @@
                                 </div>
 
                                 <div>
-                                    <h4 class="fw-bold">4</h4>
+                                    <h4 class="fw-bold"><?php echo count($data); ?></h4>
                                     <p class="mb-0"><span class="text-dark me-2">2</span> Completed</p>
                                 </div>
                             </div>
@@ -84,43 +91,38 @@
                         <div class="card">
     
                             <div class="card-header bg-white py-4">
-                                <span class="mb-0">Active Projects</span>
+                                <span class="mb-0">My Projects</span>
                             </div>
 
                             <div class="row m-3">                           
+                                
+                                <?php
+                                
+                                    foreach($data as $key => $project):
+
+                                ?>
+                                
                                 <div class="col-3 btn-primary m-3 p-1">
-                                        <div>
-                                            <a href="#" class="btn btn-block btn-lg m-2">
                                                 <div>
-                                                    <span class="">Tier List de Filmes</span>
+                                                    <a href="#" class="btn btn-block btn-lg m-2">
+                                                        <div>
+                                                            <span class=""><?php echo $project->nome ?></span>
+                                                        </div>
+                                                        <small><span class="">Criado: <?php echo $project->data_de_criacao ?></span></small>
+                                                        <small><p class="">16:20 hrs</p></small>
+                                                    </a>
                                                 </div>
-                                                <small><span class="">Criado: 20/01/2022</span></small>
-                                                <small><p class="">16:20 hrs</p></small>
-                                            </a>
-                                        </div>
                                 </div>                           
-                                <div class="col-3 btn-primary m-3 p-1">
-                                        <div>
-                                            <a href="#" class="btn btn-block btn-lg m-2">
-                                                <div>
-                                                    <span class="">Sistema de Login</span>
-                                                </div>
-                                                <small><span class="">Criado: 19/03/2022</span></small>
-                                                <small><p class="">16:20 hrs</p></small>
-                                            </a>
-                                        </div>
-                                </div>                           
-                                <div class="col-3 btn-primary m-3 p-1">
-                                        <div>
-                                            <a href="#" class="btn btn-block btn-lg m-2">
-                                                <div>
-                                                    <span class="">Plataforma X</span>
-                                                </div>
-                                                <small><span class="">Created: 19/03/2022</span></small>
-                                                <small><p class="">Worked Hours: 11:20 hrs</p></small>
-                                            </a>
-                                        </div>
-                                </div>                                              
+                                <?php
+                                
+                                    endforeach;
+
+                                ?>
+                                
+                                
+                                
+
+
                             </div>
                         </div>
 

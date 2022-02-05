@@ -14,11 +14,21 @@ class User {
     }
 
 
-    public function insertUserToDatabase() {
-        require_once('../../Entd/Database_User.php');
+    public function insertUser() {
 
-        $newUser = new DatabaseUser($this->name, $this->email, $this->password);
-        $newUser->insertUser();
+        require_once(dirname(__DIR__, 2)."\config\Connection_Database.php");
+
+        $query = $pdo->prepare("INSERT INTO usuario (nome, email, senha) 
+        VALUES (:name, :email, :password)");
+
+        $query->execute(
+            [
+                'name' => $this->name,
+                'email' => $this->email,
+                'password' => $this->password
+            ]
+        );
+
     }
 
 
