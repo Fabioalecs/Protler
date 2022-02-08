@@ -1,9 +1,9 @@
 <?php
 
+
 function consultProjects() {
 
-    require_once(dirname(__DIR__, 2)."\config\Connection_Database.php");
-
+    require(dirname(__DIR__, 2)."\config\Connection_Database.php");
 
     $query = $pdo->prepare("SELECT * FROM projeto");
     $query->execute();
@@ -11,6 +11,6 @@ function consultProjects() {
     $result = $query->fetchAll();
     return $result;
     
-
 }
 
+$activeProjects = count(consultProjects());
