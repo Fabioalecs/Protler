@@ -1,6 +1,7 @@
 <?php
-    
+session_start();
 require_once(dirname(__DIR__)."\Controller\consult_projects.php");
+
 
 ?>
 
@@ -53,7 +54,6 @@ require_once(dirname(__DIR__)."\Controller\consult_projects.php");
 
                                 <div>
                                     <h4 class="fw-bold"><?php echo $activeProjects; ?></h4>
-                                    <p class="mb-0"><span class="text-dark me-2">2</span> Completed</p>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,6 @@ require_once(dirname(__DIR__)."\Controller\consult_projects.php");
 
                                 <div>
                                     <h4 class="fw-bold">132</h4>
-                                    <p class="mb-0"><span class="text-dark me-2">28</span> Hours</p>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +104,7 @@ require_once(dirname(__DIR__)."\Controller\consult_projects.php");
                         </div>
 
                         <div class="card-footer bg-white text-center mb-2">
-                            <a href="#">View All Projects</a>
+                            <a href="../Controller/logout.php">Logout</a>
 
                         </div>
                     </div>

@@ -1,14 +1,17 @@
 <?php
 
 class Project {
+    private $userEmail;
     private $projectId;
     private $projectName;
     private $creationDate;
+    private $isCompleted; 
 
-    public function __construct($nameOfProject) {
+    public function __construct($nameOfProject, $userEmail) {
         $this->projectName = $nameOfProject;
-        $this->creationDate = (new DateTime())->format('Y-m-d H:i:s');
+        $this->creationDate = (new DateTime())->setTimezone(new DateTimeZone('America/Bahia'))->format('Y-m-d H:i:s');
         $this->projectId = NULL;
+        $this->userEmail = $userEmail;
     }
 
   
@@ -16,38 +19,18 @@ class Project {
 
         require_once(dirname(__DIR__, 2)."\config\Connection_Database.php");
 
-        $query = $pdo->prepare("INSERT INTO projeto (nome, data_de_criacao) VALUES (:name, :creationDate)");
+        $query = $pdo->prepare("INSERT INTO projeto (nome, data_de_criacao, email_de_usuario) VALUES (:name, :creationDate, :userEmail)");
 
         $query->execute(
             [
                 'name' => $this->projectName,
-                'creationDate' => $this->creationDate
+                'creationDate' => $this->creationDate,
+                'userEmail' => $this->userEmail
             ]
             );
 
-
-
     }
 
-    public function consultProjects() {
 
-        require_once(dirname(__DIR__, 2)."\config\Connection_Database.php");
-    
-    
-        $query = $pdo->prepare("SELECT * FROM projeto");
-        $query->execute();
-    
-        $arrProjects = $query->fetchAll();
-        var_dump($arrProjects);
-        
-    }
-
-    public function createCardProject() {
-
-        
-        
-
-
-    }
 
 }
